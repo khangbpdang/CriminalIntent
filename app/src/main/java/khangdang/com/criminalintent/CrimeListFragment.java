@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 public class CrimeListFragment extends ListFragment {
@@ -58,7 +59,8 @@ public class CrimeListFragment extends ListFragment {
             TextView titleTextView = (TextView)convertView.findViewById(R.id.crime_list_item_titleTextView);
             titleTextView.setText(c.getTitle());
             TextView dateTextView = (TextView)convertView.findViewById(R.id.crime_list_item_dateTextView);
-            dateTextView.setText(c.getDate().toString());
+            // Uses DateFormat class to format Date objects' information
+            dateTextView.setText(DateFormat.getDateInstance(DateFormat.FULL).format(c.getDate()));
             CheckBox solvedCheckBox = (CheckBox)convertView.findViewById(R.id.crime_list_item_solvedCheckBox);
             solvedCheckBox.setChecked(c.isSolved());
             return convertView;
